@@ -1,0 +1,72 @@
+@font-face 
+{
+font-family: 'MFVilna-Bold';
+font-style: normal;
+font-weight: 400;
+src: url('fonts/MFVilna-Bold/MFVilna-Bold.eot');
+src: 
+  url('fonts/MFVilna-Bold/MFVilna-Bold.woff') format('woff2'),
+  url('fonts/MFVilna-Bold/MFVilna-Bold.otf') format('opentype'),
+  url('fonts/MFVilna-Bold/MFVilna-Bold.svg#filename') format('svg');
+}
+
+/* html {
+    background: url(./Assets/Images/AlefBeis.svg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+} */
+
+h1 {
+    text-align: center;
+}
+
+.deck {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center; 
+}
+
+.card {
+    border: solid 1px #aaa;
+    border-radius: 9px;
+    width: 95px;
+    height: 150px;
+    float:left;
+    background-color: white;
+    padding: 3px 3px 3px 3px;
+    margin: 10px;
+}
+
+.card .value {
+    line-height: 120px;
+    height: 120px;
+    font-size: 70pt;
+    font-family: MFVilna-Bold;
+    text-align: center;
+  
+}
+
+.card .suit {
+    font-size: 50pt;
+    font-family: MFVilna-Bold;
+    text-align: center;
+}
+
+.buttons {
+    text-align: center
+}
+
+.btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
