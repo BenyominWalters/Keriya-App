@@ -23,14 +23,6 @@ function getDeck()
     return deck;
 }
 
-function deal()
-{
-    // remove top card from deck
-    var card = deck[deck.length-1];
-    deck.splice(deck.length-1, 1);
-    return card;
-}
-
 function shuffle()
 {
     // for 1000 turns
