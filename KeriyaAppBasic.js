@@ -1,7 +1,7 @@
-var cards = [" ", "א","בּ","ב","ג","ד","ה","ו","ז","ח","ט","י","כּ","כ","ך","ל","מ","ם","נ","ן","ס","ע","פּ","פ","ף","צ","ץ","ק","ר","שׁ","שׂ","תּ","ת",];
-var suits = [" ", "\u05b8", "\u05b7", "\u05b5","\u05b6", "\u05b0", "\u05b4", "\ufb4b", "\u05bb", "\ufb35","\u05b3", "\u05b2", "\u05b1",];
+var alephBeis = ["א","בּ","ב","ג","ד","ה","ו","ז","ח","ט","י","כּ","כ","ך","ל","מ","ם","נ","ן","ס","ע","פּ","פ","ף","צ","ץ","ק","ר","שׁ","שׂ","תּ","ת",];
+var nekudos = [" ",]; // For now I won't include nikud "\u05b8", "\u05b7", "\u05b5","\u05b6", "\u05b0", "\u05b4", "\ufb4b", "\u05bb", "\ufb35","\u05b3", "\u05b2", "\u05b1",];
 
-// names of nikud
+// names of nikud for possible inclussion
 // ["kamatz", "patach", "tzeiri", "segol", "sheva", "chirik", "cholam", "kubutz", "shuruk", "chataf kamatz", "chataf patach", "chataf segol"];
 
 
@@ -11,22 +11,21 @@ function getDeck()
 {
     var deck = [];
 
-    for(var i = 0; i < suits.length; i++)
+    for(var i = 0; i < nekudos.length; i++)
     {
-        for(var x = 0; x < cards.length; x++)
+        for(var x = 0; x < alephBeis.length; x++)
         {
-            var card = {Value: cards[x], Suit: suits[i]};
+            var card = {Letter: alephBeis[x], Nikud: nekudos[i]};
             deck.push(card);
         }
     }
-
     return deck;
 }
 
 function shuffle()
 {
     // for 1000 turns
-    // switch the values of two random cards
+    // switch the letters of two random cards
     for (var i = 0; i < 1000; i++)
     {
         var location1 = Math.floor((Math.random() * deck.length));
@@ -38,23 +37,53 @@ function shuffle()
     }
 }
 
+// A variable to hold the value of the correct card to be selected
+var correctLetter = 0;
+function myQuestion() {
+    // Chooses a random number. Whichever card has this id number will be marked as the "correct" card.
+    // Returns a random integer between min (include) and max (include): Math.floor(Math.random() * (max - min + 1)) + min;
+    correctLetter = Math.floor(Math.random() * 4); 
+    
+    var question = document.createElement("div");
+    question.className = "question";
+    // TODO: add sound 
+    // question.onclick = sayQuestion;
+    question.innerHTML = "Find the Letter " + deck[correctLetter].Letter + deck[correctLetter].Nikud;
+    document.getElementById("showQuestion").appendChild(question);
+    return correctLetter;
+}
+
 function renderDeck()
 {
-    for(var i = 0; i < 3; i++)
+    myQuestion();
+    for(var i = 0; i < 4; i++)
     {
         var card = document.createElement("div");
-        var value = document.createElement("div");
-        var suit = document.createElement("div");
+        var letter = document.createElement("div");
+        // var nikud = document.createElement("div");
+        // assigns each card a unique id, so that we can select one as the "correct" answer
+        card.id = i;
         card.className = "card";
-        value.className = "value";
-        suit.className = "suit";
+        card.onclick = alertMyClick;
+        letter.className = "letter";
+        // nikud.className = "nikud";
 
-        value.innerHTML = deck[i].Value + deck[i].Suit;
-        // suit.innerHTML = deck[i].Suit;
-        card.appendChild(value);
-        card.appendChild(suit);
+        letter.innerHTML = deck[i].Letter + deck[i].Nikud; // I made these in one div so that the nikud would be applied to the letter properly.
+        // nikud.innerHTML = deck[i].nikud;
+        card.appendChild(letter);
+        // card.appendChild(nikud);
 
         document.getElementById("deck").appendChild(card);
+    }
+}
+
+function alertMyClick() {
+    // if the id number of the selcted card equals the number of the correct letter mark "correct"
+    if (this.id == correctLetter) {
+        console.log("Correct!");
+    }
+    else {
+        console.log("Try again!");
     }
 }
 
@@ -63,11 +92,17 @@ function load()
     deck = getDeck();
     shuffle();
     renderDeck();
+    console.log(deck);
 }
 
 window.onload = load;
 
 function clearDeck() {
+    var myQuestion = document.getElementById("showQuestion");
+    while (myQuestion.firstChild) {
+        myQuestion.removeChild(myQuestion.firstChild);
+    }
+
     var myNode = document.getElementById("deck");
     while (myNode.firstChild) {
         myNode.removeChild(myNode.firstChild);

@@ -22,6 +22,12 @@ h1 {
     text-align: center;
 }
 
+.showQuestion {
+    text-align: center;
+    font-size: 30pt;
+    padding-bottom: 1em;
+}
+
 .deck {
     display: flex;
     flex-direction: row;
@@ -40,7 +46,7 @@ h1 {
     margin: 10px;
 }
 
-.card .value {
+.card .letter {
     line-height: 120px;
     height: 120px;
     font-size: 70pt;
@@ -49,11 +55,11 @@ h1 {
   
 }
 
-.card .suit {
+/* .card .nekudos {
     font-size: 50pt;
     font-family: MFVilna-Bold;
     text-align: center;
-}
+} */
 
 .buttons {
     text-align: center
