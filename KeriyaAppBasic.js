@@ -26,7 +26,7 @@ function shuffle()
 {
     // for 1000 turns
     // switch the letters of two random cards
-    for (var i = 0; i < 1000; i++)
+    for (var i = deck.length - 1; i > 0; i--)
     {
         var location1 = Math.floor((Math.random() * deck.length));
         var location2 = Math.floor((Math.random() * deck.length));
