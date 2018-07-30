@@ -24,8 +24,8 @@ function getDeck()
 
 function shuffle()
 {
-    // for 1000 turns
-    // switch the letters of two random cards
+    // for each card in deck
+    // switch the letters of two random cards (Fisher-Yates suffle algorithm)
     for (var i = deck.length - 1; i > 0; i--)
     {
         var location1 = Math.floor((Math.random() * deck.length));
