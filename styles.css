@@ -1,17 +1,82 @@
-@font-face 
-{
-font-family: 'MFVilna-Bold';
-font-style: normal;
-font-weight: 400;
-src: url('fonts/MFVilna-Bold/MFVilna-Bold.eot');
-src: 
-  url('fonts/MFVilna-Bold/MFVilna-Bold.woff') format('woff2'),
-  url('fonts/MFVilna-Bold/MFVilna-Bold.otf') format('opentype'),
-  url('fonts/MFVilna-Bold/MFVilna-Bold.svg#filename') format('svg');
+@font-face {
+    font-family: 'MFVilna-Bold';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/MFVilna-Bold/MFVilna-Bold.eot');
+    src: 
+    url('fonts/MFVilna-Bold/MFVilna-Bold.woff') format('woff2'),
+    url('fonts/MFVilna-Bold/MFVilna-Bold.otf') format('opentype'),
+    url('fonts/MFVilna-Bold/MFVilna-Bold.svg#filename') format('svg');
 }
 
- html {
-     margin: 0;
+.homeAlephBeisWrapper {
+    border-style: dotted;
+    border-color: red;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 100px 100px;
+    grid-gap: 10px;
+}
+
+.homeAlephBeis {
+    border-style: solid;
+    border-color: blue;
+    flex: 1;
+    font-size: 72pt;
+    text-align: center;
+}
+
+#Aleph {
+    grid-column: 3;
+    grid-row: 1 / 3;
+    padding-top: 60pt;
+}
+
+#Beis {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#Gimmel {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    padding-top: 60pt;
+}
+.play-button-outer {
+    margin: 0 auto;
+    width: 10em;
+    height: 10em;
+    background-color: rgba(0, 128, 0, 0.25);
+    cursor: pointer;
+}
+  
+.play-button {
+    margin: 0 auto;
+    top: 25%;
+    position: relative;  
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 2.5em 0 2.5em 5em;
+    border-color: transparent transparent transparent green;
+    opacity: .75; 
+}
+  
+.play-button-outer:hover {
+    background-color: rgba(0, 128, 0, .5);
+}
+  
+.play-button-outer:hover .play-button {
+    opacity: 1;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+ #gamePageWrapper {
     background: linear-gradient(
     to bottom,
     #5d9634,
@@ -22,8 +87,11 @@ src:
     /* The rectangle in which to repeat. 
     It can be fully wide in this case */
     background-size: 100% 40%;
+    width: 100%;
+    height: 100%;
 
-    /* background: url(./Assets/Images/background.jpg);
+    /* This is for having an image take up the entire screen, but it isn't keeping the proportions I want.
+    background: url(./Assets/Images/background.jpg);
     background-repeat:no-repeat;
     background-size: 100%;
     background-position:center;
@@ -33,10 +101,11 @@ src:
     -o-background-size: cover;
     background-size: cover; */
 }
+
 .header {
     float: left;
-    margin: 0 0 15px 0;
-    padding: 5px 0 -60px 0;
+    margin: 0 0 0px 0;
+    padding: 0px 0 0px 0;
     min-width: 100%;
     width: 100%;
     background-color: green;
@@ -99,6 +168,7 @@ h1 {
     vertical-align: top;
     
 }
+
 #resetButton {
     background-color: gold;
     /* background-image: url( './Assets/Images/resetButton.jpg' );
